@@ -14,15 +14,14 @@ public class StartFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.startfragment,container,false);
-		v.setOnClickListener(new OnClickListener() {
+		v.setOnClickListener(new OnClickListener() {  //here we use an anonymous inner class for the button listener
 			@Override
 			public void onClick(View v) {
-				FragmentManager fragmentManager = getFragmentManager();
+				FragmentManager fragmentManager = getFragmentManager();  //swap fragments se MainActivity for description
 			    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 				TravelPlannerFragment fragment = new TravelPlannerFragment();
 				fragmentTransaction.replace(R.id.activity_main, fragment);
 				fragmentTransaction.commit();
-				
 			}
 		});
 		return v;

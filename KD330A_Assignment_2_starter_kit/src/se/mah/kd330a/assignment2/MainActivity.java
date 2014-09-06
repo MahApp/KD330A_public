@@ -14,12 +14,13 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		FragmentManager fragmentManager = getFragmentManager();
-	    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-		StartFragment fragment = new StartFragment();
-		fragmentTransaction.replace(R.id.activity_main, fragment);
-		fragmentTransaction.commit();
+		//We add the fragment from code it can also be added from xml if it is static
+		setContentView(R.layout.activity_main);//Add the layout to the Activity with room for our fragments.
+		FragmentManager fragmentManager = getFragmentManager(); //Get the FragmentManager that handles all fragments
+	    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction(); //Ask the fragmentmanager for a FragmentTransaction so we can change fragments
+		StartFragment fragment = new StartFragment();  //Create a new fragment
+		fragmentTransaction.replace(R.id.activity_main, fragment); //Prepare to replace whatever fragment there is in the main layout with our new fragment
+		fragmentTransaction.commit(); //Actually perform the transaction
 	}
 
 }

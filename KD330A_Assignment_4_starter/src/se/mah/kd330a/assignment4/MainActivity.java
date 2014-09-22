@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
     EditText message;
 
     // TODO: You need to set your name here!
-    String name = "Ante";
+    String name = null;
     // TODO: You need to set your name here!
 
     List<ChatMessage> messages;

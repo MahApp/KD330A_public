@@ -35,6 +35,11 @@ public class ChatAdapter extends ArrayAdapter<ChatMessage> {
     }
 
     @Override
+    public int getViewTypeCount() {
+  return mDelegates.size();
+    }
+
+    @Override
     public int getItemViewType(int position) {
 	ChatMessage item = getItem(position);
 

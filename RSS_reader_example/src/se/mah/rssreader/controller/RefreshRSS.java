@@ -26,7 +26,7 @@ public class RefreshRSS extends AsyncTask <Void, Void, Void> {
 	@Override
 	protected Void doInBackground(Void... params) {
 		FeedManager feedManager = new FeedManager(mContext);
-		feedManager.readFeed();
+		feedManager.readFeedFromNet();
 		return null;
 	}
 	/**

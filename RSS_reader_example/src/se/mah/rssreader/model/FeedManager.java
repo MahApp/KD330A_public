@@ -35,7 +35,7 @@ public class FeedManager {
 		return rssFeed;
 	}
 	
-	public void readFeed(){
+	public void readFeedFromNet(){
 		DOMParser domParser = new DOMParser();
 		Random r = new Random();
 		RSSFeed rssFeed;

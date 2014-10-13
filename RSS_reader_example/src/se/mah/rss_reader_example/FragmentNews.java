@@ -37,6 +37,7 @@ public class FragmentNews extends ListFragment implements RSSCallback,OnRefreshL
 			}
 		    adapter = new RssArrayAdapter(getActivity(),R.layout.row_view, rssList);
 		    setListAdapter(adapter);
+
 		}
 
 	   @Override

@@ -6,10 +6,9 @@
     android:orientation="vertical"
     android:paddingTop="10dp" >
     
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@android:id/list"
+<ExpandableListView
+    android:id="@+id/explistview"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
-</ListView>
+</ExpandableListView>
 </android.support.v4.widget.SwipeRefreshLayout>

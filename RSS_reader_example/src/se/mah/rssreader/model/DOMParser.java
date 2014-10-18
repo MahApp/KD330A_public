@@ -47,7 +47,9 @@ public class DOMParser {
 					Node thisNode = nchild.item(j);
 					String theString = null;
 					String nodeName = thisNode.getNodeName();
-					theString = nchild.item(j).getFirstChild().getNodeValue();
+					try { //if field is empty
+						theString = nchild.item(j).getFirstChild().getNodeValue();
+					} catch (Exception e) {}
 					if (theString != null) {
 						if ("title".equals(nodeName)) {
 							// Node name is equals to 'linkTitle' so set the Node

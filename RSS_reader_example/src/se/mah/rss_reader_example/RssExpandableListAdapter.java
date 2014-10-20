@@ -1,5 +1,6 @@
 package se.mah.rss_reader_example;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -18,6 +19,7 @@ public class RssExpandableListAdapter extends BaseExpandableListAdapter {
 	private static final String TAG = "RssExpandableListAdapter";
 	private final Context context;
 	private final List<RSSItem> rssList;
+	private Date dt; 
 	
 	public RssExpandableListAdapter(Context context, int resource, List<RSSItem> objects) {
 		this.context = context;
@@ -69,7 +71,8 @@ public class RssExpandableListAdapter extends BaseExpandableListAdapter {
 	//Main
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-		 if (convertView == null) {
+		//Check date if new day add dayXML
+		if (convertView == null) {
 	            LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	            convertView = inflater.inflate(R.layout.group_view, null);
 	        }

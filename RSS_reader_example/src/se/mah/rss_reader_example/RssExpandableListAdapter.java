@@ -15,9 +15,10 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 public class RssExpandableListAdapter extends BaseExpandableListAdapter {
-	private static final String TAG = "RssArrayAdapter";
+	private static final String TAG = "RssExpandableListAdapter";
 	private final Context context;
 	private final List<RSSItem> rssList;
+	
 	public RssExpandableListAdapter(Context context, int resource, List<RSSItem> objects) {
 		this.context = context;
 		rssList = objects;
@@ -37,35 +38,31 @@ public class RssExpandableListAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public Object getGroup(int groupPosition) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 
 	@Override
 	public Object getChild(int groupPosition, int childPosition) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 
 	@Override
 	public long getGroupId(int groupPosition) {
-		// TODO Auto-generated method stub
 		return groupPosition;
 	}
 
+	
 
 	@Override
 	public long getChildId(int groupPosition, int childPosition) {
-		// TODO Auto-generated method stub
 		return groupPosition;
 	}
 
 
 	@Override
 	public boolean hasStableIds() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -91,7 +88,7 @@ public class RssExpandableListAdapter extends BaseExpandableListAdapter {
 	public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 		if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.list_item, null);
+            convertView = inflater.inflate(R.layout.child_view, null);
         }
 		TextView description_tv = (TextView)convertView.findViewById(R.id.description);
 		RSSItem rssItem = rssList.get(groupPosition);

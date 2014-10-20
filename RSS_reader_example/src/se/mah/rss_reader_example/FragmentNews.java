@@ -34,14 +34,18 @@ public class FragmentNews extends Fragment implements RSSCallback,OnRefreshListe
 
 	   @Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.rss_listview, container,false);
-			//Create the Expandable List Adapter and get the RSS feed
+			View rootView = inflater.inflate(R.layout.rss_explistview, container,false);
+			//Create the ArrayList to hold RSSItems
 			rssList = new ArrayList<RSSItem>();
+			//Create the FeedManager
 			fm = new FeedManager(getActivity());
-			if (fm.getFeed()!=null){
-				rssList.addAll(fm.getFeed().getItems());
+			//Get the feeds
+			if (fm.getSavedFeed()!=null){
+				//Add them to our list
+				rssList.addAll(fm.getSavedFeed().getItems());
 				Log.i(TAG, "Number of items i feed: "+rssList.size());
 			}
+			//Create our adapter
 		    adapter = new RssExpandableListAdapter(getActivity(),R.layout.group_view, rssList);
 		    //Connect the Adapter and the Expandable ListView
 			ExpandableListView expLv = (ExpandableListView)rootView.findViewById(R.id.explistview);
@@ -53,20 +57,22 @@ public class FragmentNews extends Fragment implements RSSCallback,OnRefreshListe
 			return rootView;
 		}
 
+	   //Called when onRefresh is started by "Pull to refresh"
 		@Override
-		public void onRefresh() { //Called when onRefresh is started by "Pull to refresh"
+		public void onRefresh() { 
 			RefreshRSS refresh = new RefreshRSS(this,getActivity()); //Will call onRefreshCompleted() when finished 
 			refresh.execute();
 		}
 		
+		//This is called when a new RSSFeed is downloaded from the net.
 		@Override
-		public void onRSSRefreshCompleted() { //This is called when a RSSFeed is downloaded.
+		public void onRSSRefreshCompleted() { 
 			Log.i(TAG,"RefreshRSS completed");
 			//All done new feed collected so refresh the current view and stop refresh animation
 			swipeRefreshLayout.setRefreshing(false);
 			//Ok get the new items and add them to an empty list
 			rssList.clear();
-			rssList.addAll(fm.getFeed().getItems());
+			rssList.addAll(fm.getSavedFeed().getItems());
 			adapter.notifyDataSetChanged(); //update the list by telling it changed
 		}
 }

@@ -29,7 +29,7 @@ public class FeedManager {
 		appContext = c;
 	}
 	
-	public RSSFeed getFeed()
+	public RSSFeed getSavedFeed()
 	{
 		loadCache();
 		return rssFeed;

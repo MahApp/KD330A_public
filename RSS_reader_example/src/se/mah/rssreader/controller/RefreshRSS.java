@@ -14,6 +14,7 @@ public class RefreshRSS extends AsyncTask <Void, Void, Void> {
 	private RSSCallback 		mFragmentCallback; //When we are finished we will tell a class that implements this interface that we are ready
 	private final String 		TAG = "Refresh";
 	
+	
 	public RefreshRSS(RSSCallback fragmentCallback, Context context) {
 		this.mFragmentCallback = fragmentCallback;
 		this.mContext = context;

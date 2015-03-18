@@ -10,6 +10,7 @@ import java.util.Map;
 import se.mah.kd330a.assignment4.adapters.ChatAdapter;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -29,7 +30,7 @@ public class MainActivity extends Activity {
     EditText message;
 
     // TODO: You need to set your name here!
-    String name = null;
+    String name = "Klara";
     // TODO: You need to set your name here!
 
     List<ChatMessage> messages;
@@ -108,7 +109,7 @@ public class MainActivity extends Activity {
 	map.put("name", name);
 	map.put("message", message.getText().toString());
 	map.put("time", sdf.format(Calendar.getInstance().getTime()));
-
+	Log.i("FAn","name: "+name+" message: "+message.getText().toString()+ "time"+ sdf.format(Calendar.getInstance().getTime()));
 	return map;
     }
 
@@ -118,24 +119,29 @@ public class MainActivity extends Activity {
 	public void onCancelled(FirebaseError snapshot) {
 	}
 
-	@Override
-	public void onChildAdded(DataSnapshot snapshot, String s) {
-	    ChatMessage msg = snapshot.getValue(ChatMessage.class);
-	    messages.add(msg);
-	    mAdapter.notifyDataSetChanged();
-	}
-
-	@Override
-	public void onChildChanged(DataSnapshot snapshot, String s) {
-	}
-
-	@Override
-	public void onChildMoved(DataSnapshot snapshot, String s) {
-	}
-
-	@Override
-	public void onChildRemoved(DataSnapshot snapshot) {
-	}
+		@Override
+		public void onChildAdded(DataSnapshot snapshot, String s) {
+		    try {
+				ChatMessage msg = snapshot.getValue(ChatMessage.class);
+				messages.add(msg);
+				mAdapter.notifyDataSetChanged();
+			} catch (Exception e) {
+				Log.i("FAn",e.toString());
+				e.printStackTrace();
+			}
+		}
+	
+		@Override
+		public void onChildChanged(DataSnapshot snapshot, String s) {
+		}
+	
+		@Override
+		public void onChildMoved(DataSnapshot snapshot, String s) {
+		}
+	
+		@Override
+		public void onChildRemoved(DataSnapshot snapshot) {
+		}
 
     }
 }
